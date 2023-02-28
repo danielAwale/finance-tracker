@@ -1,3 +1,14 @@
 export default function Home() {
-  return <h1 className="text-2xl font-bold">Hello World</h1>;
+  return (
+    <header>
+      {/* User Information */}
+      <div>
+        {/* img */}
+        <img src="" alt="" />
+
+        {/* name */}
+        <small>Daniel</small>
+      </div>
+    </header>
+  );
 }
