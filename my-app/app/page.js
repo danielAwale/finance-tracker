@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <header>
+    <header className="flex items-center justify-between">
       {/* User Information */}
       <div className="flex items-center gap-2">
         {/* img */}
@@ -15,6 +15,12 @@ export default function Home() {
         {/* name */}
         <small>Daniel</small>
       </div>
+
+      {/* Right side of our navigation */}
+      <nav className="flex item-center gap-2">
+        <div>Stats Icon</div>
+        <div>Logout Button</div>
+      </nav>
     </header>
   );
 }
