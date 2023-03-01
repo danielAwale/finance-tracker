@@ -15,9 +15,28 @@ export default function Home() {
       {/* Expenses */}
       <section className="py-6">
         <h3 className="text-2xl">My Expenses</h3>
-        <div>
-          <div>
-            <div className="w-[25px] h-[25px] rounded-full bg-yellow-500" />
+        <div className="flex flex-col gap-4 mt-6">
+          {/* Expense Item */}
+          <div className="flex items-center justify-between px-4 py-4 bg-slate-700 rounded-3xl">
+            <div className="flex items-center gap-2">
+              <div className="w-[25px] h-[25px] rounded-full bg-yellow-500" />
+              <h4 className="capitalize">Entertainment</h4>
+            </div>
+            <p>{currencyFormatter(500)}</p>
+          </div>
+          <div className="flex items-center justify-between px-4 py-4 bg-slate-700 rounded-3xl">
+            <div className="flex items-center gap-2">
+              <div className="w-[25px] h-[25px] rounded-full bg-yellow-500" />
+              <h4 className="capitalize">Entertainment</h4>
+            </div>
+            <p>{currencyFormatter(500)}</p>
+          </div>
+          <div className="flex items-center justify-between px-4 py-4 bg-slate-700 rounded-3xl">
+            <div className="flex items-center gap-2">
+              <div className="w-[25px] h-[25px] rounded-full bg-yellow-500" />
+              <h4 className="capitalize">Entertainment</h4>
+            </div>
+            <p>{currencyFormatter(500)}</p>
           </div>
         </div>
       </section>
