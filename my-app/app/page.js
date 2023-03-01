@@ -24,9 +24,7 @@ export default function Home() {
           <ImStatsBars className="text-2xl" />
         </div>
         <div>
-          <button className="px-4 py-2 text-white capitalize bg-red-600 border-red-600 rounded-xl">
-            Sign out
-          </button>
+          <button className="btn">Sign out</button>
         </div>
       </nav>
     </header>
