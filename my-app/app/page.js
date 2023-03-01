@@ -24,7 +24,7 @@ export default function Home() {
           <ImStatsBars className="text-2xl" />
         </div>
         <div>
-          <button className="btn">Sign out</button>
+          <button className="btn btn-danger">Sign out</button>
         </div>
       </nav>
     </header>
