@@ -2,6 +2,39 @@ import { currencyFormatter } from "@/lib/utils";
 
 import CategoryItem from "@/components/CategoryItem";
 
+const dummyData = [
+  {
+    id: 1,
+    title: "rent",
+    color: "red",
+    amount: 2477,
+  },
+  {
+    id: 2,
+    title: "car payments",
+    color: "green",
+    amount: 500,
+  },
+  {
+    id: 3,
+    title: "internet",
+    color: "blue",
+    amount: 150,
+  },
+  {
+    id: 4,
+    title: "phone bill",
+    color: "purple",
+    amount: 70,
+  },
+  {
+    id: 5,
+    title: "groceries",
+    color: "orange",
+    amount: 600,
+  },
+];
+
 export default function Home() {
   return (
     <main className="container mac-w-2xl px-6 py-6 mx-auto">
@@ -18,7 +51,15 @@ export default function Home() {
       <section className="py-6">
         <h3 className="text-2xl">My Expenses</h3>
         <div className="flex flex-col gap-4 mt-6">
-          <CategoryItem />
+          {dummyData.map((item) => {
+            return (
+              <CategoryItem
+                color={item.color}
+                title={item.title}
+                amount={item.amount}
+              />
+            );
+          })}
         </div>
       </section>
     </main>
