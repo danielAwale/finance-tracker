@@ -1,3 +1,5 @@
+import { ImStatsBars } from "react-icons/im";
+
 export default function Home() {
   return (
     <header className="flex items-center justify-between">
@@ -18,8 +20,14 @@ export default function Home() {
 
       {/* Right side of our navigation */}
       <nav className="flex item-center gap-2">
-        <div>Stats Icon</div>
-        <div>Logout Button</div>
+        <div>
+          <ImStatsBars className="text-2xl" />
+        </div>
+        <div>
+          <button className="px-4 py-2 text-white capitalize bg-red-600 border-red-600 rounded-xl">
+            Sign out
+          </button>
+        </div>
       </nav>
     </header>
   );
