@@ -1,4 +1,5 @@
 import React from "react";
+import { currencyFormatter } from "@/lib/utils";
 
 const CategoryItem = ({ color, title, amount }) => {
   return (
