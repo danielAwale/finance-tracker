@@ -1,8 +1,13 @@
+"use client";
+
 import { currencyFormatter } from "@/lib/utils";
 
 import CategoryItem from "@/components/CategoryItem";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const dummyData = [
   {
