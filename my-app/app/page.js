@@ -14,31 +14,31 @@ const dummyData = [
     id: 1,
     title: "rent",
     color: "red",
-    amount: 2477,
+    total: 2477,
   },
   {
     id: 2,
     title: "car payments",
     color: "green",
-    amount: 500,
+    total: 500,
   },
   {
     id: 3,
     title: "internet",
     color: "blue",
-    amount: 150,
+    total: 150,
   },
   {
     id: 4,
     title: "phone bill",
     color: "purple",
-    amount: 70,
+    total: 70,
   },
   {
     id: 5,
     title: "groceries",
     color: "orange",
-    amount: 600,
+    total: 600,
   },
 ];
 
@@ -63,7 +63,7 @@ export default function Home() {
               <CategoryItem
                 color={item.color}
                 title={item.title}
-                amount={item.amount}
+                amount={item.total}
               />
             );
           })}
@@ -73,17 +73,17 @@ export default function Home() {
       {/* Chart Section */}
       <section className="py-6 px-6">
         <h3 className="text-2xl">Stats</h3>
-        <div>
+        <div className="w-1/2 mx-auto">
           <Doughnut
             data={{
-              labels: dummyData.map((expense) => {
-                expense.title;
-              }),
+              labels: dummyData.map((expense) => expense.title),
               datasets: [
                 {
                   label: "Expenses",
-                  data: dummyData.map((expenses) => expenses.amount),
+                  data: dummyData.map((expenses) => expenses.total),
                   backgroundColor: dummyData.map((expenses) => expenses.color),
+                  borderColor: ["#18181b"],
+                  borderWidth: 5,
                 },
               ],
             }}

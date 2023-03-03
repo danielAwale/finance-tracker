@@ -21,9 +21,9 @@ const Nav = () => {
         </div>
 
         {/* Right side of our navigation */}
-        <nav className="flex item-center gap-2">
+        <nav className="flex item-center gap-4">
           <div>
-            <ImStatsBars className="text-2xl" />
+            <ImStatsBars className="text-4xl" />
           </div>
           <div>
             <button className="btn btn-danger">Sign out</button>
