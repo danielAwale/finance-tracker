@@ -73,6 +73,22 @@ export default function Home() {
       {/* Chart Section */}
       <section className="py-6 px-6">
         <h3 className="text-2xl">Stats</h3>
+        <div>
+          <Doughnut
+            data={{
+              labels: dummyData.map((expense) => {
+                expense.title;
+              }),
+              datasets: [
+                {
+                  label: "Expenses",
+                  data: dummyData.map((expenses) => expenses.amount),
+                  backgroundColor: dummyData.map((expenses) => expenses.color),
+                },
+              ],
+            }}
+          />
+        </div>
       </section>
     </main>
   );
