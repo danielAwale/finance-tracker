@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import { currencyFormatter } from "@/lib/utils";
 
 import CategoryItem from "@/components/CategoryItem";
@@ -43,12 +45,21 @@ const dummyData = [
 ];
 
 export default function Home() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   return (
     <>
       {/* Modal */}
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="container mx-auto max-w-2xl h-[80vh] rounded-3xl bg-slate-800"></div>
-      </div>
+      {modalIsOpen && (
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="container mx-auto max-w-2xl h-[80vh] rounded-3xl bg-slate-800 py-6 px-4">
+            <button className="w-10 h-10 mb-4 font-bold rounded-full bg-slate-600">
+              X
+            </button>
+            <h3>I am a modal</h3>
+          </div>
+        </div>
+      )}
       <main className="container mac-w-2xl px-6 py-6 mx-auto">
         <section className="py-3">
           <small className="text-gray-400 text-md">My Balance</small>
