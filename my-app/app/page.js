@@ -50,7 +50,9 @@ export default function Home() {
 
   return (
     <>
-      <Modal show={modalIsOpen} onClose={setModalIsOpen} />
+      <Modal show={modalIsOpen} onClose={setModalIsOpen}>
+        <h3>Hello World!!!</h3>
+      </Modal>
       <main className="container mac-w-2xl px-6 py-6 mx-auto">
         <section className="py-3">
           <small className="text-gray-400 text-md">My Balance</small>
