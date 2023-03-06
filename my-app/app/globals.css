@@ -8,7 +8,7 @@
   }
 
   button {
-    @apply hover:scale-110 transition-all duration-300;
+    @apply self-start hover:scale-110 transition-all duration-300;
   }
 }
 

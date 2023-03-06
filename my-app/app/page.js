@@ -50,9 +50,23 @@ export default function Home() {
 
   return (
     <>
+      {/* Add Income Modal */}
       <Modal show={addIncomeModal} onClose={setAddIncomeModal}>
-        <h3>Hello World!!!</h3>
+        <form className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4">
+            <label htmlFor="amount">Income Amount</label>
+            <input className="px-4 py-2 bg-slate-600 rounded-xl" name="amount" type="number" min={0.01} step={0.01} placeholder="Enter income amount" required />
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <label htmlFor="amount">Description</label>
+            <input className="px-4 py-2 bg-slate-600 rounded-xl" name="description" type="text" placeholder="Enter income description" required />
+          </div>
+
+          <button type="submit" className="btn btn-primary">Add Entry</button>
+        </form>
       </Modal>
+
       <main className="container mac-w-2xl px-6 py-6 mx-auto">
         <section className="py-3">
           <small className="text-gray-400 text-md">My Balance</small>
