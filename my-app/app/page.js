@@ -63,7 +63,7 @@ export default function Home() {
             <input name="description" type="text" placeholder="Enter income description" required />
           </div>
 
-          <button type="submit" className="btn btn-primary">Add Entry</button>
+          <button type="submit" className="self-start btn btn-primary">Add Entry</button>
         </form>
       </Modal>
 
