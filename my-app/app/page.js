@@ -51,9 +51,9 @@ export default function Home() {
     <>
       {/* Modal */}
       {modalIsOpen && (
-        <div className="absolute top-0 left-0 w-full h-full">
+        <div className="absolute top-0 left-0 w-full h-full z-10">
           <div className="container mx-auto max-w-2xl h-[80vh] rounded-3xl bg-slate-800 py-6 px-4">
-            <button className="w-10 h-10 mb-4 font-bold rounded-full bg-slate-600">
+            <button className="w-10 h-10 mb-4 font-bold rounded-full bg-slate-600" onClick={() => setModalIsOpen(false)}>
               X
             </button>
             <h3>I am a modal</h3>
@@ -66,8 +66,8 @@ export default function Home() {
           <h2 className="text-4xl font-bold">{currencyFormatter(6000)}</h2>
         </section>
         <section className="flex items-center gap-2 py-3">
-          <button className="btn btn-primary">+ Expense</button>
-          <button className="btn btn-primary-outline">+ Income</button>
+          <button className="btn btn-primary" onClick={() => setModalIsOpen(true)}>+ Expense</button>
+          <button className="btn btn-primary-outline" onClick={() => setModalIsOpen(true)}>+ Income</button>
         </section>
 
         {/* Expenses */}
