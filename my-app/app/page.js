@@ -50,16 +50,18 @@ export default function Home() {
   return (
     <>
       {/* Modal */}
-      {modalIsOpen && (
-        <div className="absolute top-0 left-0 w-full h-full z-10">
-          <div className="container mx-auto max-w-2xl h-[80vh] rounded-3xl bg-slate-800 py-6 px-4">
-            <button className="w-10 h-10 mb-4 font-bold rounded-full bg-slate-600" onClick={() => setModalIsOpen(false)}>
-              X
-            </button>
-            <h3>I am a modal</h3>
-          </div>
+
+      <div style={{
+        transform: modalIsOpen ? "translateX(0%)" : "translate(-200%)"
+      }} className="absolute top-0 left-0 w-full h-full z-10 transition-all duration-500">
+        <div className="container mx-auto max-w-2xl h-[80vh] rounded-3xl bg-slate-800 py-6 px-4">
+          <button className="w-10 h-10 mb-4 font-bold rounded-full bg-slate-600" onClick={() => setModalIsOpen(false)}>
+            X
+          </button>
+          <h3>I am a modal</h3>
         </div>
-      )}
+      </div>
+
       <main className="container mac-w-2xl px-6 py-6 mx-auto">
         <section className="py-3">
           <small className="text-gray-400 text-md">My Balance</small>
