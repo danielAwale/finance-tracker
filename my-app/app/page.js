@@ -46,11 +46,11 @@ const dummyData = [
 ];
 
 export default function Home() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [addIncomeModal, setAddIncomeModal] = useState(false);
 
   return (
     <>
-      <Modal show={modalIsOpen} onClose={setModalIsOpen}>
+      <Modal show={addIncomeModal} onClose={setAddIncomeModal}>
         <h3>Hello World!!!</h3>
       </Modal>
       <main className="container mac-w-2xl px-6 py-6 mx-auto">
@@ -59,8 +59,8 @@ export default function Home() {
           <h2 className="text-4xl font-bold">{currencyFormatter(6000)}</h2>
         </section>
         <section className="flex items-center gap-2 py-3">
-          <button className="btn btn-primary" onClick={() => setModalIsOpen(true)}>+ Expense</button>
-          <button className="btn btn-primary-outline" onClick={() => setModalIsOpen(true)}>+ Income</button>
+          <button className="btn btn-primary" onClick={() => { }}>+ Expense</button>
+          <button className="btn btn-primary-outline" onClick={() => setAddIncomeModal(true)}>+ Income</button>
         </section>
 
         {/* Expenses */}
