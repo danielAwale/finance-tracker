@@ -56,10 +56,9 @@ export default function Home() {
 
     const newIncome = {
       amount: amountRef.current.value,
-      description: descriptionRef.current.value
+      description: descriptionRef.current.value,
+      createdAt: new Date()
     }
-
-    console.log(newIncome)
 
 
   }
@@ -100,6 +99,7 @@ export default function Home() {
             {dummyData.map((item) => {
               return (
                 <CategoryItem
+                  key={item.id}
                   color={item.color}
                   title={item.title}
                   amount={item.total}
