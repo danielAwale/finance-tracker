@@ -54,6 +54,13 @@ export default function Home() {
   const addIncomeHandler = (e) => {
     e.preventDefault();
 
+    const newIncome = {
+      amount: amountRef.current.value,
+      description: descriptionRef.current.value
+    }
+
+    console.log(newIncome)
+
 
   }
 
@@ -64,12 +71,12 @@ export default function Home() {
         <form className="input-group" onSubmit={addIncomeHandler}>
           <div className="input-group">
             <label htmlFor="amount">Income Amount</label>
-            <input name="amount" type="number" min={0.01} step={0.01} placeholder="Enter income amount" required />
+            <input name="amount" ref={amountRef} type="number" min={0.01} step={0.01} placeholder="Enter income amount" required />
           </div>
 
           <div className="input-group">
             <label htmlFor="amount">Description</label>
-            <input name="description" type="text" placeholder="Enter income description" required />
+            <input name="description" ref={descriptionRef} type="text" placeholder="Enter income description" required />
           </div>
 
           <button type="submit" className="self-start btn btn-primary">Add Entry</button>
