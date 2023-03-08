@@ -10,6 +10,11 @@ import Modal from "@/components/Modal";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
+//Firebase
+
+import { db } from "@/lib/firebase";
+import { collection, addDoc } from "firebase/firestore";
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const dummyData = [
@@ -51,7 +56,7 @@ export default function Home() {
   const descriptionRef = useRef();
 
   //handler funtion
-  const addIncomeHandler = (e) => {
+  const addIncomeHandler = async (e) => {
     e.preventDefault();
 
     const newIncome = {
@@ -60,6 +65,13 @@ export default function Home() {
       createdAt: new Date()
     }
 
+    // create a reference to the collection, it will use the collection function, 
+    const collectionRef = collection(db, 'income')
+    try {
+      const docSnap = await addDoc(collectionRef, newIncome)
+    } catch (error) {
+      console.log(error.message)
+    }
 
   }
 
