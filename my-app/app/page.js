@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import { currencyFormatter } from "@/lib/utils";
 
@@ -47,12 +47,21 @@ const dummyData = [
 
 export default function Home() {
   const [addIncomeModal, setAddIncomeModal] = useState(false);
+  const amountRef = useRef();
+  const descriptionRef = useRef();
+
+  //handler funtion
+  const addIncomeHandler = (e) => {
+    e.preventDefault();
+
+
+  }
 
   return (
     <>
       {/* Add Income Modal */}
       <Modal show={addIncomeModal} onClose={setAddIncomeModal}>
-        <form className="input-group">
+        <form className="input-group" onSubmit={addIncomeHandler}>
           <div className="input-group">
             <label htmlFor="amount">Income Amount</label>
             <input name="amount" type="number" min={0.01} step={0.01} placeholder="Enter income amount" required />
