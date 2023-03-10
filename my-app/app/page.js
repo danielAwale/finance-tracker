@@ -1,13 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import { currencyFormatter } from "@/lib/utils";
 
 import CategoryItem from "@/components/CategoryItem";
+import Modal from "@/components/Modal";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+
+//Firebase
+
+import { db } from "@/lib/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -45,39 +51,81 @@ const dummyData = [
 ];
 
 export default function Home() {
-  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const [addIncomeModal, setAddIncomeModal] = useState(false);
+  const amountRef = useRef();
+  const descriptionRef = useRef();
+
+  //handler funtion
+  const addIncomeHandler = async (e) => {
+    e.preventDefault();
+
+    const newIncome = {
+      amount: amountRef.current.value,
+      description: descriptionRef.current.value,
+      createdAt: new Date(),
+    };
+
+    // create a reference to the collection, it will use the collection function,
+    const collectionRef = collection(db, "income");
+    try {
+      const docSnap = await addDoc(collectionRef, newIncome);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <>
-      {/* Modal */}
-      {modalIsOpen && (
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="container mx-auto max-w-2xl h-[80vh] rounded-3xl bg-slate-800 py-6 px-4">
-            <button
-              onClick={() => setModalIsOpen(false)}
-              className="w-10 h-10 mb-4 font-bold rounded-full bg-slate-600"
-            >
-              X
-            </button>
-            <h3>I am a modal</h3>
+      {/* Add Income Modal */}
+      <Modal show={addIncomeModal} onClose={setAddIncomeModal}>
+        <form className="input-group" onSubmit={addIncomeHandler}>
+          <div className="input-group">
+            <label htmlFor="amount">Income Amount</label>
+            <input
+              name="amount"
+              ref={amountRef}
+              type="number"
+              min={0.01}
+              step={0.01}
+              placeholder="Enter income amount"
+              required
+            />
           </div>
-        </div>
-      )}
+
+          <div className="input-group">
+            <label htmlFor="amount">Description</label>
+            <input
+              name="description"
+              ref={descriptionRef}
+              type="text"
+              placeholder="Enter income description"
+              required
+            />
+          </div>
+
+          <button type="submit" className="self-start btn btn-primary">
+            Add Entry
+          </button>
+        </form>
+      </Modal>
+
       <main className="container mac-w-2xl px-6 py-6 mx-auto">
         <section className="py-3">
           <small className="text-gray-400 text-md">My Balance</small>
-          <h2 className="text-4xl font-bold">{currencyFormatter(6000)}</h2>
+          <h2 className="text-4xl font-bold">{currencyFormatter(10000)}</h2>
         </section>
         <section className="flex items-center gap-2 py-3">
           <button
             onClick={() => setModalIsOpen(true)}
             className="btn btn-primary"
+            onClick={() => {}}
           >
             + Expense
           </button>
           <button
             onClick={() => setModalIsOpen(true)}
             className="btn btn-primary-outline"
+            onClick={() => setAddIncomeModal(true)}
           >
             + Income
           </button>
@@ -90,6 +138,7 @@ export default function Home() {
             {dummyData.map((item) => {
               return (
                 <CategoryItem
+                  key={item.id}
                   color={item.color}
                   title={item.title}
                   amount={item.total}
