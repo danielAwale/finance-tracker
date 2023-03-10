@@ -45,7 +45,7 @@ const dummyData = [
 ];
 
 export default function Home() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(true);
 
   return (
     <>
@@ -53,7 +53,10 @@ export default function Home() {
       {modalIsOpen && (
         <div className="absolute top-0 left-0 w-full h-full">
           <div className="container mx-auto max-w-2xl h-[80vh] rounded-3xl bg-slate-800 py-6 px-4">
-            <button className="w-10 h-10 mb-4 font-bold rounded-full bg-slate-600">
+            <button
+              onClick={() => setModalIsOpen(false)}
+              className="w-10 h-10 mb-4 font-bold rounded-full bg-slate-600"
+            >
               X
             </button>
             <h3>I am a modal</h3>
@@ -66,8 +69,18 @@ export default function Home() {
           <h2 className="text-4xl font-bold">{currencyFormatter(6000)}</h2>
         </section>
         <section className="flex items-center gap-2 py-3">
-          <button className="btn btn-primary">+ Expense</button>
-          <button className="btn btn-primary-outline">+ Income</button>
+          <button
+            onClick={() => setModalIsOpen(true)}
+            className="btn btn-primary"
+          >
+            + Expense
+          </button>
+          <button
+            onClick={() => setModalIsOpen(true)}
+            className="btn btn-primary-outline"
+          >
+            + Income
+          </button>
         </section>
 
         {/* Expenses */}
