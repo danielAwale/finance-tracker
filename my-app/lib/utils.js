@@ -1,10 +1,8 @@
 export const currencyFormatter = (amount) => {
-  const formatter = Intl.NumberFormat("em-us", {
-    currency: "CAD",
+  const formatter = Intl.NumberFormat("en-US", {
+    currency: "USD",
     style: "currency",
   });
-
-  // double check NumberFormat in Javascript
 
   return formatter.format(amount);
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import { currencyFormatter } from "@/lib/utils";
 
@@ -13,7 +13,7 @@ import { Doughnut } from "react-chartjs-2";
 //Firebase
 
 import { db } from "@/lib/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -51,6 +51,7 @@ const dummyData = [
 ];
 
 export default function Home() {
+  const [income, setIncome] = useState([])
   const [addIncomeModal, setAddIncomeModal] = useState(false);
   const amountRef = useRef();
   const descriptionRef = useRef();
@@ -73,6 +74,25 @@ export default function Home() {
       console.log(error.message);
     }
   };
+
+  useEffect(() => {
+    const getIncomeData = async () => {
+      const collectionRef = collection(db, 'ioncome')
+      const docsSnap = await getDocs(collectionRef)
+
+      const data = docsSnap.docs.map(doc => {
+        return {
+          id: doc.id,
+          ...doc.data(),
+          createdAt: new Date(doc.ddata().createdAt.toMillis())
+        }
+      })
+
+      setIncome(data)
+    }
+
+    getIncomeData()
+  }, [])
 
   return (
     <>
@@ -107,6 +127,11 @@ export default function Home() {
             Add Entry
           </button>
         </form>
+
+        <div className="flex flex-col gap-4 mt-6">
+          <h3 className="text-2xl font-bold">Income History</h3>
+
+        </div>
       </Modal>
 
       <main className="container mac-w-2xl px-6 py-6 mx-auto">
@@ -118,7 +143,7 @@ export default function Home() {
           <button
             onClick={() => setModalIsOpen(true)}
             className="btn btn-primary"
-            onClick={() => {}}
+            onClick={() => { }}
           >
             + Expense
           </button>
